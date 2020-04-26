@@ -1,0 +1,7 @@
+== Automate instance configuration
+
+.To run 
+
+* git clone https://github.com/miteshrh/openstack-resource-automation.git
+* cd openstack-resource-automation/instance-configuration
+* ansible-playbook main.yml -e GUID=<your guid>

@@ -1,0 +1,37 @@
+---
+- name: Building openstack instance inventory
+  import_playbook: in_memory_inventory.yml
+             
+- hosts: all 
+  gather_facts: false
+  tasks:     
+  - ping:
+  
+- name: Good Ansible Role based play
+  hosts: all
+  become: true
+  gather_facts: false   # Speeds up the execution
+  roles:
+
+    - role: HAproxy
+      when: inventory_hostname in groups['frontends']
+      
+    - role: apache
+      when: inventory_hostname in groups['apps']
+
+    - role: tomcat
+      when: inventory_hostname in groups['apps']
+
+    - role: postgresql
+      when: inventory_hostname in groups['appdbs']
+ 
+
+- name: Smoke test
+  hosts: localhost
+  tasks:
+    - name: Accessing frontend
+      uri:
+        url: http://{{item}}
+        status_code: 200
+      loop: "{{ groups['frontends'] }}"
+

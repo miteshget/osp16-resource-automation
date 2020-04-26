@@ -1,0 +1,26 @@
+---
+- name: Basic config for control node
+  hosts: localhost
+  gather_facts: False
+  tasks:
+  - name: Install openstacksdk
+    shell: pip install openstacksdk ansible -U
+
+  - name: create openstack dir
+    file:
+      path: /etc/openstack
+      state: directory
+
+  - name: create clouds.yml
+    copy:
+      src: clouds.yml
+      dest: /etc/openstack/clouds.yml
+  
+  - name: Verify openstack connectivity
+    os_auth:
+      cloud: ospcloud
+
+  - name: get user's list
+    os_user_facts:
+      cloud: ospcloud
+

@@ -1,0 +1,17 @@
+---          
+- hosts: localhost
+  gather_facts: False
+  tasks:     
+    - include_tasks: tasks/network.yml
+    - include_tasks: tasks/image.yml
+    - include_tasks: tasks/flavor.yml
+    - include_tasks: tasks/keypair.yml
+    - include_tasks: tasks/security_group.yml
+    - include_tasks: tasks/frontend.yml
+    - include_tasks: tasks/app1.yml
+    - include_tasks: tasks/app2.yml
+    - include_tasks: tasks/db.yml
+
+# Uncomment below line to check connectivity provided you have credential
+# configured for instances on tower. 
+# - import_playbook: instance_inventory.yml
