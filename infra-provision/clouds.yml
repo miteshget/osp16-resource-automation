@@ -1,5 +1,5 @@
 clouds:
-  openstack:
+  ospcloud:
     auth:
       auth_url: http://192.0.2.21:5000
       username: "admin"
