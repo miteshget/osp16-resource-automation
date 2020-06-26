@@ -1,0 +1,20 @@
+---
+
+- name: Create image
+  import_playbook: create-image.yaml  
+ 
+- name: Create flavor
+  import_playbook: create-flavor.yaml  
+  
+- name: Create key
+  import_playbook: create-key.yaml  
+  
+- name: Create security groups
+  import_playbook: create-sg.yaml
+
+- name: Create network
+  import_playbook: create-network.yaml  
+  
+- name: Create instances
+  import_playbook: create-instances.yaml  
+
