@@ -4,6 +4,7 @@
   tasks:  
   - name: Fetch Instance Info
     os_server_info:
+      cloud: open_cred
       region_name: regionOne
     register: result
 
